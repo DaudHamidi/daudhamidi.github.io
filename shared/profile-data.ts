@@ -17,6 +17,8 @@ export interface ProfileData {
   social: {
     linkedin: string;
     github: string;
+    orcid: string;
+    googleScholar: string;
   };
 }
 
@@ -29,6 +31,8 @@ export const profileData: ProfileData = {
   social: {
     linkedin: "https://www.linkedin.com/in/daudhamidi/",
     github: "https://github.com/DaudHamidi",
+    orcid: "https://orcid.org/0000-0001-8382-4504",
+    googleScholar: "https://scholar.google.com/citations?user=MIxU1Y8AAAAJ&hl=en",
   },
 };
 

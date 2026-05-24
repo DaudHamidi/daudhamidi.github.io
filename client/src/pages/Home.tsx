@@ -427,7 +427,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 justify-center">
             <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground" size="lg">
               <a href={emailHref}>
                 <Mail className="w-4 h-4 mr-2" />
@@ -444,6 +444,18 @@ export default function Home() {
               <a href={profile.social.github} target="_blank" rel="noopener noreferrer">
                 <Github className="w-4 h-4 mr-2" />
                 GitHub
+              </a>
+            </Button>
+            <Button asChild variant="outline" size="lg">
+              <a href={profile.social.orcid} target="_blank" rel="noopener noreferrer">
+                <ExternalLink className="w-4 h-4 mr-2" />
+                ORCID
+              </a>
+            </Button>
+            <Button asChild variant="outline" size="lg">
+              <a href={profile.social.googleScholar} target="_blank" rel="noopener noreferrer">
+                <ExternalLink className="w-4 h-4 mr-2" />
+                Google Scholar
               </a>
             </Button>
           </div>
