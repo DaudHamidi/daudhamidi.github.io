@@ -1,0 +1,247 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  /* Isometric Minimalism: Blue/Cyan SaaS Aesthetic */
+  --primary: oklch(0.57 0.22 252);
+  --primary-foreground: oklch(1 0 0);
+  --sidebar-primary: oklch(0.57 0.22 252);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --chart-1: oklch(0.67 0.16 240);
+  --chart-2: oklch(0.61 0.19 248);
+  --chart-3: oklch(0.57 0.22 252);
+  --chart-4: oklch(0.52 0.21 255);
+  --chart-5: oklch(0.47 0.19 258);
+  --radius: 0.75rem;
+  --background: oklch(0.99 0 0);
+  --foreground: oklch(0.24 0.03 252);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.24 0.03 252);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.24 0.03 252);
+  --secondary: oklch(0.96 0.02 235);
+  --secondary-foreground: oklch(0.24 0.03 252);
+  --muted: oklch(0.92 0.01 0);
+  --muted-foreground: oklch(0.53 0.03 245);
+  --accent: oklch(0.64 0.15 225);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.94 0.015 240);
+  --input: oklch(0.96 0.015 240);
+  --ring: oklch(0.57 0.22 252);
+  --sidebar: oklch(0.99 0 0);
+  --sidebar-foreground: oklch(0.24 0.03 252);
+  --sidebar-accent: oklch(0.64 0.15 225);
+  --sidebar-accent-foreground: oklch(1 0 0);
+  --sidebar-border: oklch(0.94 0.015 240);
+  --sidebar-ring: oklch(0.57 0.22 252);
+}
+
+.dark {
+  --primary: var(--color-blue-700);
+  --primary-foreground: var(--color-blue-50);
+  --sidebar-primary: var(--color-blue-500);
+  --sidebar-primary-foreground: var(--color-blue-50);
+  --background: oklch(0.16 0.02 255);
+  --foreground: oklch(0.9 0.01 245);
+  --card: oklch(0.22 0.02 255);
+  --card-foreground: oklch(0.9 0.01 245);
+  --popover: oklch(0.22 0.02 255);
+  --popover-foreground: oklch(0.9 0.01 245);
+  --secondary: oklch(0.27 0.02 252);
+  --secondary-foreground: oklch(0.84 0.01 245);
+  --muted: oklch(0.29 0.02 252);
+  --muted-foreground: oklch(0.74 0.015 245);
+  --accent: oklch(0.29 0.02 252);
+  --accent-foreground:  oklch(0.92 0.005 65);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.488 0.243 264.376);
+  --chart-1: var(--color-blue-300);
+  --chart-2: var(--color-blue-500);
+  --chart-3: var(--color-blue-600);
+  --chart-4: var(--color-blue-700);
+  --chart-5: var(--color-blue-800);
+  --sidebar: oklch(0.22 0.02 255);
+  --sidebar-foreground: oklch(0.9 0.01 245);
+  --sidebar-accent: oklch(0.29 0.02 252);
+  --sidebar-accent-foreground:  oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.488 0.243 264.376);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    font-family: 'Sora', sans-serif;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .font-mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  /**
+   * Custom container utility that centers content and adds responsive padding.
+   *
+   * This overrides Tailwind's default container behavior to:
+   * - Auto-center content (mx-auto)
+   * - Add responsive horizontal padding
+   * - Set max-width for large screens
+   *
+   * Usage: <div className="container">...</div>
+   *
+   * For custom widths, use max-w-* utilities directly:
+   * <div className="max-w-6xl mx-auto px-4">...</div>
+   */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* 16px - mobile padding */
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  /* Isometric Minimalism Design System */
+  .soft-shadow {
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.08), 0 2px 8px rgba(37, 99, 235, 0.04);
+  }
+
+  .soft-shadow-lg {
+    box-shadow: 0 12px 32px rgba(37, 99, 235, 0.12), 0 4px 16px rgba(37, 99, 235, 0.06);
+  }
+
+  .isometric-card {
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.08), 0 2px 8px rgba(37, 99, 235, 0.04);
+    border-radius: 0.75rem;
+    transition: all 300ms ease-out;
+    transform: perspective(1200px) rotateX(0deg) rotateY(0deg);
+  }
+
+  .isometric-card:hover {
+    box-shadow: 0 12px 32px rgba(37, 99, 235, 0.12), 0 4px 16px rgba(37, 99, 235, 0.06);
+    transform: perspective(1200px) rotateX(2deg) rotateY(-2deg) translateZ(8px);
+  }
+
+  .gradient-accent {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #2563EB 0%, #06B6D4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .stagger-item {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .stagger-item:nth-child(1) { animation-delay: 0ms; }
+  .stagger-item:nth-child(2) { animation-delay: 80ms; }
+  .stagger-item:nth-child(3) { animation-delay: 160ms; }
+  .stagger-item:nth-child(4) { animation-delay: 240ms; }
+  .stagger-item:nth-child(5) { animation-delay: 320ms; }
+  .stagger-item:nth-child(6) { animation-delay: 400ms; }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem; /* 24px - tablet padding */
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem; /* 32px - desktop padding */
+      padding-right: 2rem;
+      max-width: 1280px; /* Standard content width */
+    }
+  }
+}
