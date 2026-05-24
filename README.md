@@ -1,4 +1,4 @@
-# Daud Hamidi Portfolio Website
+# Portfolio Website
 
 Personal portfolio website for Daud Hamidi.
 
