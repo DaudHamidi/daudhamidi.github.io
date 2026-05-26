@@ -22,6 +22,7 @@ const institutionDomains = [
   { pattern: "regional environmental centre for central asia", domain: "carececo.org" },
   { pattern: "royal academy of engineering", domain: "raeng.org.uk" },
   { pattern: "stockholm international peace research institute", domain: "sipri.org" },
+  { pattern: "comparative morocco-afghanistan water management study", domain: "unesco.org" },
   { pattern: "unesco chair on water management in central asia", domain: "unesco.org" },
   { pattern: "university of central asia", domain: "ucentralasia.org" },
   { pattern: "usaid", domain: "usaid.gov" },
@@ -557,7 +558,6 @@ export default function Home() {
         <div className="container flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center text-sm text-muted-foreground">
           <p>&copy; 2026 {profile.name}. All rights reserved.</p>
           <div className="flex flex-col sm:items-end gap-2">
-            <p className="text-xs font-semibold tracking-wide uppercase text-muted-foreground/80">Professional Profiles</p>
             <div className="flex flex-wrap items-center gap-2">
               <a
                 href={profile.social.orcid}
