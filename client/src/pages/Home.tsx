@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Mail, ExternalLink, Github, Linkedin } from "lucide-react";
+import { Mail, ExternalLink, Linkedin } from "lucide-react";
 import {
   profileData as fallbackProfileData,
   publications as fallbackPublications,
@@ -543,12 +543,6 @@ export default function Home() {
               <a href={profile.social.linkedin} target="_blank" rel="noopener noreferrer">
                 <Linkedin className="w-4 h-4 mr-2" />
                 LinkedIn
-              </a>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <a href={profile.social.github} target="_blank" rel="noopener noreferrer">
-                <Github className="w-4 h-4 mr-2" />
-                GitHub
               </a>
             </Button>
             <Button asChild variant="outline" size="lg">
