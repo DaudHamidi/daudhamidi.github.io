@@ -62,17 +62,17 @@ export default function Home() {
   }, []);
 
   const fullPublicationList = useMemo(() => [...publicationList].sort((a, b) => b.year - a.year), [publicationList]);
+  const hideNavName =
+    profile.name.trim().length > 0 &&
+    profile.name.trim().toLowerCase() === profile.headline.trim().toLowerCase();
   const emailHref = `mailto:${profile.contactEmail}`;
-  const normalizedName = (profile.name ?? "").trim().toLowerCase();
-  const normalizedHeadline = (profile.headline ?? "").trim().toLowerCase();
-  const shouldShowHeadline = normalizedHeadline.length > 0 && normalizedHeadline !== normalizedName;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-        <div className="container flex items-center justify-between h-16">
-          <div className="text-xl font-bold gradient-text">{profile.name}</div>
+        <div className={`container flex items-center h-16 ${hideNavName ? "justify-end" : "justify-between"}`}>
+          {!hideNavName && <div className="text-xl font-bold gradient-text">{profile.name}</div>}
           <div className="flex gap-6">
             <a href="#expertise" className="text-sm font-medium hover:text-primary transition-colors">Expertise</a>
             <a
@@ -100,11 +100,9 @@ export default function Home() {
           {/* Left Content */}
           <div className="fade-in space-y-6">
             <div className="space-y-3">
-              {shouldShowHeadline && (
-                <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
-                  {profile.headline}
-                </h1>
-              )}
+              <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+                {profile.headline}
+              </h1>
               <p className="text-xl text-muted-foreground">
                 {profile.summary}
               </p>
