@@ -545,22 +545,35 @@ export default function Home() {
                 LinkedIn
               </a>
             </Button>
-            <Button asChild variant="outline" size="lg">
-              <a href={profile.social.orcid} target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="w-4 h-4 mr-2" />
-                ORCID
-              </a>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <a href={profile.social.googleScholar} target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="w-4 h-4 mr-2" />
-                Google Scholar
-              </a>
-            </Button>
           </div>
 
         </div>
       </section>
+
+      <aside className="hidden lg:flex fixed right-4 top-1/2 -translate-y-1/2 z-40">
+        <div className="flex flex-col gap-2 rounded-2xl border border-border bg-white/90 backdrop-blur-sm p-2 soft-shadow">
+          <a
+            href={profile.social.orcid}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-foreground hover:bg-muted transition-colors"
+            aria-label="Open ORCID profile"
+          >
+            <ExternalLink className="w-4 h-4 text-primary" />
+            ORCID
+          </a>
+          <a
+            href={profile.social.googleScholar}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-foreground hover:bg-muted transition-colors"
+            aria-label="Open Google Scholar profile"
+          >
+            <ExternalLink className="w-4 h-4 text-primary" />
+            Google Scholar
+          </a>
+        </div>
+      </aside>
       </main>
 
       {/* Footer */}
