@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Mail, ExternalLink, Linkedin } from "lucide-react";
+import { Mail, ExternalLink } from "lucide-react";
 import {
   profileData as fallbackProfileData,
   publications as fallbackPublications,
@@ -536,20 +536,20 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 justify-center">
             <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground" size="lg">
-              <a href={emailHref}>
+              <a href={emailHref} className="inline-flex items-center text-sm lg:text-base font-medium">
                 <Mail className="w-4 h-4 mr-2" />
                 Send Email
               </a>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <a href={xProfileUrl} target="_blank" rel="noopener noreferrer">
+              <a href={xProfileUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm lg:text-base font-medium">
                 <img src="https://cdn.simpleicons.org/x/005bbd" alt="X logo" className="w-4 h-4 mr-2" loading="lazy" />
                 X
               </a>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <a href={profile.social.linkedin} target="_blank" rel="noopener noreferrer">
-                <Linkedin className="w-4 h-4 mr-2" />
+              <a href={profile.social.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm lg:text-base font-medium">
+                <img src="https://cdn.simpleicons.org/linkedin/005bbd" alt="LinkedIn logo" className="w-4 h-4 mr-2" loading="lazy" />
                 LinkedIn
               </a>
             </Button>
@@ -573,7 +573,7 @@ export default function Home() {
                 aria-label="Open ORCID profile"
               >
                 <img src="https://cdn.simpleicons.org/orcid/005bbd" alt="ORCID logo" className="w-4 h-4" loading="lazy" />
-                <span className="font-medium text-foreground">ORCID</span>
+                <span className="font-medium text-sm text-foreground">ORCID</span>
               </a>
               <a
                 href={profile.social.googleScholar}
@@ -583,7 +583,7 @@ export default function Home() {
                 aria-label="Open Google Scholar profile"
               >
                 <img src="https://cdn.simpleicons.org/googlescholar/005bbd" alt="Google Scholar logo" className="w-4 h-4" loading="lazy" />
-                <span className="font-medium text-foreground">Google Scholar</span>
+                <span className="font-medium text-sm text-foreground">Google Scholar</span>
               </a>
             </div>
           </div>
