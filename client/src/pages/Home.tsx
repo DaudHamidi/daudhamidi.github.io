@@ -17,12 +17,14 @@ import {
   type ProfileData,
   type Publication,
 } from "@shared/profile-data";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<"experience" | "publications" | "skills">("experience");
   const [profile, setProfile] = useState<ProfileData>(fallbackProfileData);
   const [publicationList, setPublicationList] = useState<Publication[]>(fallbackPublications);
+  const [isHeroVisible, setIsHeroVisible] = useState(true);
+  const heroSectionRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -62,17 +64,48 @@ export default function Home() {
   }, []);
 
   const fullPublicationList = useMemo(() => [...publicationList].sort((a, b) => b.year - a.year), [publicationList]);
-  const hideNavName =
+  const hasDuplicateIdentity =
     profile.name.trim().length > 0 &&
     profile.name.trim().toLowerCase() === profile.headline.trim().toLowerCase();
+  const showNavName = !hasDuplicateIdentity || !isHeroVisible;
   const emailHref = `mailto:${profile.contactEmail}`;
+
+  useEffect(() => {
+    const heroElement = heroSectionRef.current;
+    if (!heroElement) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsHeroVisible(entry.isIntersecting);
+      },
+      {
+        // Offset for sticky nav height so the name appears slightly before hero fully leaves view.
+        rootMargin: "-64px 0px 0px 0px",
+        threshold: 0.2,
+      }
+    );
+
+    observer.observe(heroElement);
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-        <div className={`container flex items-center h-16 ${hideNavName ? "justify-end" : "justify-between"}`}>
-          {!hideNavName && <div className="text-xl font-bold gradient-text">{profile.name}</div>}
+        <div className={`container flex items-center h-16 ${showNavName ? "justify-between" : "justify-end"}`}>
+          <div
+            className={`text-xl font-bold gradient-text transition-all duration-300 ${
+              showNavName ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1 pointer-events-none"
+            }`}
+            aria-hidden={!showNavName}
+          >
+            {profile.name}
+          </div>
           <div className="flex gap-6">
             <a href="#expertise" className="text-sm font-medium hover:text-primary transition-colors">Expertise</a>
             <a
@@ -95,7 +128,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 overflow-hidden">
+      <section ref={heroSectionRef} className="relative py-20 lg:py-32 overflow-hidden">
         <div className="container grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="fade-in space-y-6">
