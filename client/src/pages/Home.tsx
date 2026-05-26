@@ -63,6 +63,9 @@ export default function Home() {
 
   const fullPublicationList = useMemo(() => [...publicationList].sort((a, b) => b.year - a.year), [publicationList]);
   const emailHref = `mailto:${profile.contactEmail}`;
+  const normalizedName = (profile.name ?? "").trim().toLowerCase();
+  const normalizedHeadline = (profile.headline ?? "").trim().toLowerCase();
+  const shouldShowHeadline = normalizedHeadline.length > 0 && normalizedHeadline !== normalizedName;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -97,9 +100,11 @@ export default function Home() {
           {/* Left Content */}
           <div className="fade-in space-y-6">
             <div className="space-y-3">
-              <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
-                {profile.headline}
-              </h1>
+              {shouldShowHeadline && (
+                <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+                  {profile.headline}
+                </h1>
+              )}
               <p className="text-xl text-muted-foreground">
                 {profile.summary}
               </p>
