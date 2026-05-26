@@ -9,6 +9,32 @@ import {
 } from "@shared/profile-data";
 import { useEffect, useMemo, useRef, useState } from "react";
 
+const affiliations = [
+  { name: "Durham University", domain: "durham.ac.uk" },
+  { name: "University of Central Asia", domain: "ucentralasia.org" },
+  { name: "Stockholm International Peace Research Institute", domain: "sipri.org" },
+  { name: "Asian Development Bank", domain: "adb.org" },
+  { name: "Regional Environmental Centre for Central Asia", domain: "carececo.org" },
+  { name: "USAID", domain: "usaid.gov" },
+  { name: "UNESCO Chair on Water Management in Central Asia", domain: "unesco.org" },
+  { name: "Nazarbayev University", domain: "nu.edu.kz" },
+  { name: "National Water Affairs Regulation Authority", domain: "nwara.gov.af" },
+  { name: "International Water Resources Association", domain: "iwra.org" },
+  { name: "Royal Academy of Engineering", domain: "raeng.org.uk" },
+  { name: "Jami University", domain: "jami.edu.af" },
+  { name: "Kazakh-German University", domain: "dku.kz" },
+  { name: "Kabul Polytechnic University", domain: "kpu.edu.af" },
+];
+
+function initialsFromName(name: string) {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() ?? "")
+    .join("");
+}
+
 export default function Home() {
   const [activeTab, setActiveTab] = useState<"experience" | "publications" | "skills">("experience");
   const [profile, setProfile] = useState<ProfileData>(fallbackProfileData);
@@ -432,6 +458,46 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Affiliations */}
+      <section className="py-20 lg:py-32 bg-gradient-accent">
+        <div className="container space-y-12">
+          <div className="max-w-3xl">
+            <h2 className="text-4xl font-bold mb-4">Affiliations & Institutions</h2>
+            <p className="text-muted-foreground">
+              Partner institutions and organizations connected to my research, policy, and professional engagement.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            {affiliations.map((item) => (
+              <Card key={item.name} className="isometric-card p-5 bg-white">
+                <div className="flex items-center gap-4">
+                  <div className="relative w-14 h-14 flex-shrink-0 rounded-xl border border-border bg-background/60 overflow-hidden">
+                    <img
+                      src={`https://logo.clearbit.com/${item.domain}?size=128`}
+                      alt={`${item.name} logo`}
+                      loading="lazy"
+                      className="w-full h-full object-contain p-2"
+                      onError={(event) => {
+                        event.currentTarget.style.display = "none";
+                        const fallback = event.currentTarget.nextElementSibling as HTMLElement | null;
+                        if (fallback) {
+                          fallback.style.display = "flex";
+                        }
+                      }}
+                    />
+                    <div className="hidden w-full h-full items-center justify-center text-xs font-bold text-primary">
+                      {initialsFromName(item.name)}
+                    </div>
+                  </div>
+                  <p className="text-sm font-semibold leading-snug">{item.name}</p>
+                </div>
               </Card>
             ))}
           </div>
