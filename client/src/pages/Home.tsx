@@ -23,8 +23,17 @@ const affiliations = [
   { name: "Royal Academy of Engineering", domain: "raeng.org.uk" },
   { name: "Jami University", domain: "jami.edu.af" },
   { name: "Kazakh-German University", domain: "dku.kz" },
+  { name: "Kabul University", domain: "ku.edu.af" },
   { name: "Kabul Polytechnic University", domain: "kpu.edu.af" },
 ];
+
+function logoSourcesForDomain(domain: string) {
+  return [
+    `https://logo.clearbit.com/${domain}?size=256`,
+    `https://www.google.com/s2/favicons?domain=${domain}&sz=128`,
+    `https://icons.duckduckgo.com/ip3/${domain}.ico`,
+  ];
+}
 
 function initialsFromName(name: string) {
   return name
@@ -87,6 +96,7 @@ export default function Home() {
   const emailHref = `mailto:${profile.contactEmail}`;
   const sectionClass = "py-20 lg:py-28";
   const sectionContainerClass = "container space-y-12";
+  const compactSectionClass = "py-14 lg:py-20";
 
   useEffect(() => {
     const heroElement = heroSectionRef.current;
@@ -437,7 +447,7 @@ export default function Home() {
       </section>
 
       {/* Professional Activities */}
-      <section className={sectionClass}>
+      <section className={compactSectionClass}>
         <div className={sectionContainerClass}>
           <div className="max-w-2xl">
             <h2 className="text-4xl font-bold mb-4">Professional Engagement</h2>
@@ -467,7 +477,7 @@ export default function Home() {
       </section>
 
       {/* Affiliations */}
-      <section className={`${sectionClass} bg-gradient-accent`}>
+      <section className={`${compactSectionClass} bg-gradient-accent`}>
         <div className={sectionContainerClass}>
           <div className="max-w-3xl">
             <h2 className="text-4xl font-bold mb-4">Affiliations & Institutions</h2>
@@ -479,11 +489,22 @@ export default function Home() {
                 <Card key={`${item.name}-${idx}`} className="affiliations-card isometric-card bg-white">
                   <div className="relative w-16 h-16 rounded-xl border border-border bg-background/60 overflow-hidden">
                     <img
-                      src={`https://logo.clearbit.com/${item.domain}?size=128`}
+                      src={logoSourcesForDomain(item.domain)[0]}
                       alt={`${item.name} logo`}
                       loading="lazy"
                       className="w-full h-full object-contain p-2"
+                      data-logo-index="0"
                       onError={(event) => {
+                        const currentIndex = Number(event.currentTarget.dataset.logoIndex ?? "0");
+                        const sources = logoSourcesForDomain(item.domain);
+                        const nextIndex = currentIndex + 1;
+
+                        if (nextIndex < sources.length) {
+                          event.currentTarget.dataset.logoIndex = String(nextIndex);
+                          event.currentTarget.src = sources[nextIndex];
+                          return;
+                        }
+
                         event.currentTarget.style.display = "none";
                         const fallback = event.currentTarget.nextElementSibling as HTMLElement | null;
                         if (fallback) {
@@ -504,7 +525,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className={`${sectionClass} bg-gradient-accent`}>
+      <section id="contact" className={`${compactSectionClass} bg-gradient-accent`}>
         <div className="container max-w-2xl text-center space-y-10">
           <div className="space-y-4">
             <h2 className="text-4xl font-bold">Let's Connect</h2>
