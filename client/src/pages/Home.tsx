@@ -9,28 +9,35 @@ import {
 } from "@shared/profile-data";
 import { useEffect, useMemo, useRef, useState } from "react";
 
-const affiliations = [
-  { name: "Asian Development Bank", domain: "adb.org" },
-  { name: "Durham University", domain: "durham.ac.uk" },
-  { name: "Jami University", domain: "jami.edu.af" },
-  { name: "Kabul Polytechnic University", domain: "kpu.edu.af" },
-  { name: "Kabul University", domain: "ku.edu.af" },
-  { name: "Kazakh-German University", domain: "dku.kz" },
-  { name: "National Water Affairs Regulation Authority", domain: "nwara.gov.af" },
-  { name: "Nazarbayev University", domain: "nu.edu.kz" },
-  { name: "Regional Environmental Centre for Central Asia", domain: "carececo.org" },
-  { name: "Royal Academy of Engineering", domain: "raeng.org.uk" },
-  { name: "Stockholm International Peace Research Institute", domain: "sipri.org" },
-  { name: "UNESCO Chair on Water Management in Central Asia", domain: "unesco.org" },
-  { name: "University of Central Asia", domain: "ucentralasia.org" },
-  { name: "USAID", domain: "usaid.gov" },
+const institutionDomains = [
+  { pattern: "asian development bank", domain: "adb.org" },
+  { pattern: "durham university", domain: "durham.ac.uk" },
+  { pattern: "jami university", domain: "jami.edu.af" },
+  { pattern: "kabul polytechnic university", domain: "kpu.edu.af" },
+  { pattern: "kabul university", domain: "ku.edu.af" },
+  { pattern: "kazakh-german university", domain: "dku.kz" },
+  { pattern: "national water affairs regulation authority", domain: "nwara.gov.af" },
+  { pattern: "nwara", domain: "nwara.gov.af" },
+  { pattern: "nazarbayev university", domain: "nu.edu.kz" },
+  { pattern: "regional environmental centre for central asia", domain: "carececo.org" },
+  { pattern: "royal academy of engineering", domain: "raeng.org.uk" },
+  { pattern: "stockholm international peace research institute", domain: "sipri.org" },
+  { pattern: "unesco chair on water management in central asia", domain: "unesco.org" },
+  { pattern: "university of central asia", domain: "ucentralasia.org" },
+  { pattern: "usaid", domain: "usaid.gov" },
 ];
 
-function logoSourcesForDomain(domain: string) {
+function logoSourcesForInstitution(label: string) {
+  const normalizedLabel = label.toLowerCase();
+  const matched = institutionDomains.find((item) => normalizedLabel.includes(item.pattern));
+  if (!matched) {
+    return [];
+  }
+
   return [
-    `https://logo.clearbit.com/${domain}?size=256`,
-    `https://www.google.com/s2/favicons?domain=${domain}&sz=128`,
-    `https://icons.duckduckgo.com/ip3/${domain}.ico`,
+    `https://logo.clearbit.com/${matched.domain}?size=256`,
+    `https://www.google.com/s2/favicons?domain=${matched.domain}&sz=128`,
+    `https://icons.duckduckgo.com/ip3/${matched.domain}.ico`,
   ];
 }
 
@@ -41,6 +48,37 @@ function initialsFromName(name: string) {
     .slice(0, 2)
     .map((part) => part[0]?.toUpperCase() ?? "")
     .join("");
+}
+
+function InstitutionLogo({ label }: { label: string }) {
+  const sources = useMemo(() => logoSourcesForInstitution(label), [label]);
+  const [sourceIndex, setSourceIndex] = useState(0);
+  const [showFallback, setShowFallback] = useState(sources.length === 0);
+
+  if (showFallback) {
+    return (
+      <div className="w-5 h-5 rounded-full border border-border bg-background/70 text-[9px] font-bold text-primary flex items-center justify-center flex-shrink-0">
+        {initialsFromName(label)}
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={sources[sourceIndex]}
+      alt={`${label} logo`}
+      loading="lazy"
+      className="w-5 h-5 rounded-full border border-border bg-background/70 p-0.5 object-contain flex-shrink-0"
+      onError={() => {
+        const nextIndex = sourceIndex + 1;
+        if (nextIndex < sources.length) {
+          setSourceIndex(nextIndex);
+          return;
+        }
+        setShowFallback(true);
+      }}
+    />
+  );
 }
 
 export default function Home() {
@@ -324,7 +362,10 @@ export default function Home() {
                   <div className="flex justify-between items-start">
                     <div>
                       <h3 className="text-xl font-bold">{exp.role}</h3>
-                      <p className="text-primary font-semibold">{exp.org}</p>
+                      <p className="text-primary font-semibold flex items-center gap-2">
+                        <InstitutionLogo label={exp.org} />
+                        <span>{exp.org}</span>
+                      </p>
                       {exp.location && <p className="text-xs text-muted-foreground mt-1">{exp.location}</p>}
                     </div>
                     <span className="text-sm text-muted-foreground font-medium whitespace-nowrap">{exp.period}</span>
@@ -418,7 +459,10 @@ export default function Home() {
               ].map((edu, idx) => (
                 <Card key={idx} className="isometric-card p-4 stagger-item bg-white">
                   <h3 className="font-bold">{edu.degree}</h3>
-                  <p className="text-sm text-primary font-semibold">{edu.school}</p>
+                  <p className="text-sm text-primary font-semibold flex items-center gap-2">
+                    <InstitutionLogo label={edu.school} />
+                    <span>{edu.school}</span>
+                  </p>
                   <p className="text-xs text-muted-foreground">{edu.year}</p>
                 </Card>
               ))}
@@ -436,7 +480,10 @@ export default function Home() {
               ].map((award, idx) => (
                 <Card key={idx} className="isometric-card p-4 stagger-item bg-white">
                   <h3 className="font-bold text-sm">{award.title}</h3>
-                  <p className="text-xs text-primary font-semibold">{award.org}</p>
+                  <p className="text-xs text-primary font-semibold flex items-center gap-2">
+                    <InstitutionLogo label={award.org} />
+                    <span>{award.org}</span>
+                  </p>
                   <p className="text-xs text-muted-foreground mt-1">{award.year}</p>
                 </Card>
               ))}
@@ -471,54 +518,6 @@ export default function Home() {
                 </ul>
               </Card>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Affiliations */}
-      <section className={`${compactSectionClass} bg-gradient-accent`}>
-        <div className={sectionContainerClass}>
-          <div className="max-w-3xl">
-            <h2 className="text-4xl font-bold mb-4">Affiliations & Institutions</h2>
-          </div>
-
-          <div className="affiliations-marquee" aria-label="Affiliated institutions">
-            <div className="affiliations-track">
-              {[...affiliations, ...affiliations].map((item, idx) => (
-                <Card key={`${item.name}-${idx}`} className="affiliations-card isometric-card bg-white">
-                  <div className="relative w-16 h-16 rounded-xl border border-border bg-background/60 overflow-hidden">
-                    <img
-                      src={logoSourcesForDomain(item.domain)[0]}
-                      alt={`${item.name} logo`}
-                      loading="lazy"
-                      className="w-full h-full object-contain p-2"
-                      data-logo-index="0"
-                      onError={(event) => {
-                        const currentIndex = Number(event.currentTarget.dataset.logoIndex ?? "0");
-                        const sources = logoSourcesForDomain(item.domain);
-                        const nextIndex = currentIndex + 1;
-
-                        if (nextIndex < sources.length) {
-                          event.currentTarget.dataset.logoIndex = String(nextIndex);
-                          event.currentTarget.src = sources[nextIndex];
-                          return;
-                        }
-
-                        event.currentTarget.style.display = "none";
-                        const fallback = event.currentTarget.nextElementSibling as HTMLElement | null;
-                        if (fallback) {
-                          fallback.style.display = "flex";
-                        }
-                      }}
-                    />
-                    <div className="hidden w-full h-full items-center justify-center text-xs font-bold text-primary">
-                      {initialsFromName(item.name)}
-                    </div>
-                  </div>
-                  <p className="text-xs font-semibold leading-snug text-center">{item.name}</p>
-                </Card>
-              ))}
-            </div>
           </div>
         </div>
       </section>
