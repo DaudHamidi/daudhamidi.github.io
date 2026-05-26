@@ -85,6 +85,8 @@ export default function Home() {
     profile.name.trim().toLowerCase() === profile.headline.trim().toLowerCase();
   const showNavName = !hasDuplicateIdentity || !isHeroVisible;
   const emailHref = `mailto:${profile.contactEmail}`;
+  const sectionClass = "py-20 lg:py-28";
+  const sectionContainerClass = "container space-y-12";
 
   useEffect(() => {
     const heroElement = heroSectionRef.current;
@@ -139,7 +141,7 @@ export default function Home() {
       <main>
 
       {/* Hero Section */}
-      <section ref={heroSectionRef} className="relative py-20 lg:py-32 overflow-hidden">
+      <section ref={heroSectionRef} className={`relative ${sectionClass} overflow-hidden`}>
         <div className="container grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="fade-in space-y-6">
@@ -190,8 +192,8 @@ export default function Home() {
       </section>
 
       {/* Expertise Section */}
-      <section id="expertise" className="py-20 lg:py-32 bg-gradient-accent">
-        <div className="container space-y-12">
+      <section id="expertise" className={`${sectionClass} bg-gradient-accent`}>
+        <div className={sectionContainerClass}>
           <div className="max-w-2xl">
             <h2 className="text-4xl font-bold mb-4">Areas of Expertise</h2>
           </div>
@@ -215,8 +217,8 @@ export default function Home() {
       </section>
 
       {/* Experience & Publications Tabs */}
-      <section id="experience" className="py-20 lg:py-32">
-        <div className="container space-y-12">
+      <section id="experience" className={sectionClass}>
+        <div className={sectionContainerClass}>
           <div className="flex gap-4 border-b border-border">
             <button
               onClick={() => setActiveTab("experience")}
@@ -395,7 +397,7 @@ export default function Home() {
       </section>
 
       {/* Education & Achievements */}
-      <section className="py-20 lg:py-32 bg-gradient-accent">
+      <section className={`${sectionClass} bg-gradient-accent`}>
         <div className="container grid md:grid-cols-2 gap-12">
           <div className="space-y-6">
             <h2 className="text-3xl font-bold">Education</h2>
@@ -435,8 +437,8 @@ export default function Home() {
       </section>
 
       {/* Professional Activities */}
-      <section className="py-20 lg:py-32">
-        <div className="container space-y-12">
+      <section className={sectionClass}>
+        <div className={sectionContainerClass}>
           <div className="max-w-2xl">
             <h2 className="text-4xl font-bold mb-4">Professional Engagement</h2>
           </div>
@@ -465,8 +467,8 @@ export default function Home() {
       </section>
 
       {/* Affiliations */}
-      <section className="py-20 lg:py-32 bg-gradient-accent">
-        <div className="container space-y-12">
+      <section className={`${sectionClass} bg-gradient-accent`}>
+        <div className={sectionContainerClass}>
           <div className="max-w-3xl">
             <h2 className="text-4xl font-bold mb-4">Affiliations & Institutions</h2>
           </div>
@@ -502,8 +504,8 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 lg:py-32 bg-gradient-accent">
-        <div className="container max-w-2xl text-center space-y-8">
+      <section id="contact" className={`${sectionClass} bg-gradient-accent`}>
+        <div className="container max-w-2xl text-center space-y-10">
           <div className="space-y-4">
             <h2 className="text-4xl font-bold">Let's Connect</h2>
             <p className="text-lg text-muted-foreground">
