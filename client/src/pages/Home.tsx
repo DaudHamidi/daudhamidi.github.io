@@ -1,13 +1,3 @@
-/**
- * Home Page - Daud Hamidi Consulting Profile
- * 
- * Design Philosophy: Isometric Minimalism
- * - Clean whitespace emphasizes expertise
- * - Soft indigo/violet shadows and gradients
- * - Smooth, understated animations
- * - Geometric sans-serif (Sora) typography
- */
-
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Mail, ExternalLink, Github, Linkedin } from "lucide-react";
