@@ -131,6 +131,7 @@ export default function Home() {
     profile.name.trim().toLowerCase() === profile.headline.trim().toLowerCase();
   const showNavName = !hasDuplicateIdentity || !isHeroVisible;
   const emailHref = `mailto:${profile.contactEmail}`;
+  const xProfileUrl = "https://x.com/daudhamidi";
   const sectionClass = "py-14 lg:py-20";
   const sectionContainerClass = "container space-y-12";
   const compactSectionClass = "py-10 lg:py-14";
@@ -549,37 +550,47 @@ export default function Home() {
 
         </div>
       </section>
-
-      <aside className="hidden lg:flex fixed right-4 top-1/2 -translate-y-1/2 z-40">
-        <div className="flex flex-col gap-2 rounded-2xl border border-border bg-white/90 backdrop-blur-sm p-2 soft-shadow">
-          <a
-            href={profile.social.orcid}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-foreground hover:bg-muted transition-colors"
-            aria-label="Open ORCID profile"
-          >
-            <ExternalLink className="w-4 h-4 text-primary" />
-            ORCID
-          </a>
-          <a
-            href={profile.social.googleScholar}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-foreground hover:bg-muted transition-colors"
-            aria-label="Open Google Scholar profile"
-          >
-            <ExternalLink className="w-4 h-4 text-primary" />
-            Google Scholar
-          </a>
-        </div>
-      </aside>
       </main>
 
       {/* Footer */}
       <footer className="py-8 border-t border-border">
-        <div className="container flex justify-between items-center text-sm text-muted-foreground">
+        <div className="container flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center text-sm text-muted-foreground">
           <p>&copy; 2026 {profile.name}. All rights reserved.</p>
+          <div className="flex flex-col sm:items-end gap-2">
+            <p className="text-xs font-semibold tracking-wide uppercase text-muted-foreground/80">Professional Profiles</p>
+            <div className="flex flex-wrap items-center gap-2">
+              <a
+                href={profile.social.orcid}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 hover:bg-muted transition-colors"
+                aria-label="Open ORCID profile"
+              >
+                <img src="https://cdn.simpleicons.org/orcid/005bbd" alt="ORCID logo" className="w-4 h-4" loading="lazy" />
+                <span className="font-medium text-foreground">ORCID</span>
+              </a>
+              <a
+                href={profile.social.googleScholar}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 hover:bg-muted transition-colors"
+                aria-label="Open Google Scholar profile"
+              >
+                <img src="https://cdn.simpleicons.org/googlescholar/005bbd" alt="Google Scholar logo" className="w-4 h-4" loading="lazy" />
+                <span className="font-medium text-foreground">Google Scholar</span>
+              </a>
+              <a
+                href={xProfileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 hover:bg-muted transition-colors"
+                aria-label="Open X profile"
+              >
+                <img src="https://cdn.simpleicons.org/x/005bbd" alt="X logo" className="w-4 h-4" loading="lazy" />
+                <span className="font-medium text-foreground">X</span>
+              </a>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
