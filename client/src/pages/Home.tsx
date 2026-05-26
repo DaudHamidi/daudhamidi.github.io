@@ -120,6 +120,8 @@ export default function Home() {
         </div>
       </nav>
 
+      <main>
+
       {/* Hero Section */}
       <section ref={heroSectionRef} className="relative py-20 lg:py-32 overflow-hidden">
         <div className="container grid lg:grid-cols-2 gap-12 items-center">
@@ -319,7 +321,7 @@ export default function Home() {
                     <div className="space-y-3">
                       <div className="flex justify-between items-start gap-4">
                         <div className="flex-1">
-                          <h4 className="font-bold text-base leading-snug">{pub.title}</h4>
+                          <h3 className="font-bold text-base leading-snug">{pub.title}</h3>
                           <p className="text-sm text-muted-foreground mt-1">{pub.authors}</p>
                         </div>
                         <span className="text-sm font-semibold text-primary flex-shrink-0">{pub.year}</span>
@@ -388,7 +390,7 @@ export default function Home() {
                 { degree: "B.Sc. in Civil Engineering", school: "Jami University, Afghanistan", year: "2011–2015" },
               ].map((edu, idx) => (
                 <Card key={idx} className="isometric-card p-4 stagger-item bg-white">
-                  <h4 className="font-bold">{edu.degree}</h4>
+                  <h3 className="font-bold">{edu.degree}</h3>
                   <p className="text-sm text-primary font-semibold">{edu.school}</p>
                   <p className="text-xs text-muted-foreground">{edu.year}</p>
                 </Card>
@@ -406,7 +408,7 @@ export default function Home() {
                 { title: "UNESCO Silk Roads Youth Research Grant", org: "Comparative Morocco-Afghanistan Water Management Study", year: "2021–2022" },
               ].map((award, idx) => (
                 <Card key={idx} className="isometric-card p-4 stagger-item bg-white">
-                  <h4 className="font-bold text-sm">{award.title}</h4>
+                  <h3 className="font-bold text-sm">{award.title}</h3>
                   <p className="text-xs text-primary font-semibold">{award.org}</p>
                   <p className="text-xs text-muted-foreground mt-1">{award.year}</p>
                 </Card>
@@ -491,6 +493,7 @@ export default function Home() {
 
         </div>
       </section>
+      </main>
 
       {/* Footer */}
       <footer className="py-8 border-t border-border">
