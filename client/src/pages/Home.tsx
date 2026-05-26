@@ -98,14 +98,7 @@ export default function Home() {
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className={`container flex items-center h-16 ${showNavName ? "justify-between" : "justify-end"}`}>
-          <div
-            className={`text-xl font-bold gradient-text transition-all duration-300 ${
-              showNavName ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1 pointer-events-none"
-            }`}
-            aria-hidden={!showNavName}
-          >
-            {profile.name}
-          </div>
+          {showNavName && <div className="text-xl font-bold gradient-text">{profile.name}</div>}
           <div className="flex gap-6">
             <a href="#expertise" className="text-sm font-medium hover:text-primary transition-colors">Expertise</a>
             <a
