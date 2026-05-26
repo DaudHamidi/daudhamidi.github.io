@@ -455,7 +455,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold">Education</h2>
             <div className="space-y-4">
               {[
-                { degree: "Ph.D. from Earth Sciences", school: "Durham University, UK", year: "2019–2023" },
+                { degree: "Ph.D. from Earth Sciences Department", school: "Durham University, UK", year: "2019–2023" },
                 { degree: "Master of Economics in Integrated Water Resources Management", school: "Kazakh-German University, Kazakhstan", year: "2017–2019" },
                 { degree: "B.Sc. in Civil Engineering", school: "Jami University, Afghanistan", year: "2011–2015" },
               ].map((edu, idx) => (
