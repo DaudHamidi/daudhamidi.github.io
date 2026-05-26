@@ -469,16 +469,13 @@ export default function Home() {
         <div className="container space-y-12">
           <div className="max-w-3xl">
             <h2 className="text-4xl font-bold mb-4">Affiliations & Institutions</h2>
-            <p className="text-muted-foreground">
-              Partner institutions and organizations connected to my research, policy, and professional engagement.
-            </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-            {affiliations.map((item) => (
-              <Card key={item.name} className="isometric-card p-5 bg-white">
-                <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 flex-shrink-0 rounded-xl border border-border bg-background/60 overflow-hidden">
+          <div className="affiliations-marquee" aria-label="Affiliated institutions">
+            <div className="affiliations-track">
+              {[...affiliations, ...affiliations].map((item, idx) => (
+                <Card key={`${item.name}-${idx}`} className="affiliations-card isometric-card bg-white">
+                  <div className="relative w-16 h-16 rounded-xl border border-border bg-background/60 overflow-hidden">
                     <img
                       src={`https://logo.clearbit.com/${item.domain}?size=128`}
                       alt={`${item.name} logo`}
@@ -496,10 +493,10 @@ export default function Home() {
                       {initialsFromName(item.name)}
                     </div>
                   </div>
-                  <p className="text-sm font-semibold leading-snug">{item.name}</p>
-                </div>
-              </Card>
-            ))}
+                  <p className="text-xs font-semibold leading-snug text-center">{item.name}</p>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>
