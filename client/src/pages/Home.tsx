@@ -542,6 +542,12 @@ export default function Home() {
               </a>
             </Button>
             <Button asChild variant="outline" size="lg">
+              <a href={xProfileUrl} target="_blank" rel="noopener noreferrer">
+                <img src="https://cdn.simpleicons.org/x/005bbd" alt="X logo" className="w-4 h-4 mr-2" loading="lazy" />
+                X
+              </a>
+            </Button>
+            <Button asChild variant="outline" size="lg">
               <a href={profile.social.linkedin} target="_blank" rel="noopener noreferrer">
                 <Linkedin className="w-4 h-4 mr-2" />
                 LinkedIn
@@ -578,16 +584,6 @@ export default function Home() {
               >
                 <img src="https://cdn.simpleicons.org/googlescholar/005bbd" alt="Google Scholar logo" className="w-4 h-4" loading="lazy" />
                 <span className="font-medium text-foreground">Google Scholar</span>
-              </a>
-              <a
-                href={xProfileUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 hover:bg-muted transition-colors"
-                aria-label="Open X profile"
-              >
-                <img src="https://cdn.simpleicons.org/x/005bbd" alt="X logo" className="w-4 h-4" loading="lazy" />
-                <span className="font-medium text-foreground">X</span>
               </a>
             </div>
           </div>
