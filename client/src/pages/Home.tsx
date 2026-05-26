@@ -10,21 +10,20 @@ import {
 import { useEffect, useMemo, useRef, useState } from "react";
 
 const affiliations = [
-  { name: "Durham University", domain: "durham.ac.uk" },
-  { name: "University of Central Asia", domain: "ucentralasia.org" },
-  { name: "Stockholm International Peace Research Institute", domain: "sipri.org" },
   { name: "Asian Development Bank", domain: "adb.org" },
-  { name: "Regional Environmental Centre for Central Asia", domain: "carececo.org" },
-  { name: "USAID", domain: "usaid.gov" },
-  { name: "UNESCO Chair on Water Management in Central Asia", domain: "unesco.org" },
-  { name: "Nazarbayev University", domain: "nu.edu.kz" },
-  { name: "National Water Affairs Regulation Authority", domain: "nwara.gov.af" },
-  { name: "International Water Resources Association", domain: "iwra.org" },
-  { name: "Royal Academy of Engineering", domain: "raeng.org.uk" },
+  { name: "Durham University", domain: "durham.ac.uk" },
   { name: "Jami University", domain: "jami.edu.af" },
-  { name: "Kazakh-German University", domain: "dku.kz" },
-  { name: "Kabul University", domain: "ku.edu.af" },
   { name: "Kabul Polytechnic University", domain: "kpu.edu.af" },
+  { name: "Kabul University", domain: "ku.edu.af" },
+  { name: "Kazakh-German University", domain: "dku.kz" },
+  { name: "National Water Affairs Regulation Authority", domain: "nwara.gov.af" },
+  { name: "Nazarbayev University", domain: "nu.edu.kz" },
+  { name: "Regional Environmental Centre for Central Asia", domain: "carececo.org" },
+  { name: "Royal Academy of Engineering", domain: "raeng.org.uk" },
+  { name: "Stockholm International Peace Research Institute", domain: "sipri.org" },
+  { name: "UNESCO Chair on Water Management in Central Asia", domain: "unesco.org" },
+  { name: "University of Central Asia", domain: "ucentralasia.org" },
+  { name: "USAID", domain: "usaid.gov" },
 ];
 
 function logoSourcesForDomain(domain: string) {
