@@ -24,7 +24,7 @@ export interface ProfileData {
 
 export const profileData: ProfileData = {
   name: "Daud Hamidi",
-  headline: "Water Management & Development Consultant",
+  headline: "Daud Hamidi",
   summary:
     "Client-focused consultant with 8+ years of experience supporting donor-funded water and development programmes through project coordination, stakeholder engagement, reporting, and applied research. Focused on evidence-based policy support in water governance, WASH, hydrogeology, and climate-resilient solutions across fragile and developing contexts.",
   contactEmail: "daud.hamidi@yahoo.com",
@@ -174,3 +174,4 @@ export const publications: Publication[] = [
     url: "https://doi.org/10.1007/S12517-019-4505-Y",
   },
 ];
+
