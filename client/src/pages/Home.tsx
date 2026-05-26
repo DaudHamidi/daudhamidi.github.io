@@ -131,9 +131,9 @@ export default function Home() {
     profile.name.trim().toLowerCase() === profile.headline.trim().toLowerCase();
   const showNavName = !hasDuplicateIdentity || !isHeroVisible;
   const emailHref = `mailto:${profile.contactEmail}`;
-  const sectionClass = "py-20 lg:py-28";
+  const sectionClass = "py-14 lg:py-20";
   const sectionContainerClass = "container space-y-12";
-  const compactSectionClass = "py-14 lg:py-20";
+  const compactSectionClass = "py-10 lg:py-14";
 
   useEffect(() => {
     const heroElement = heroSectionRef.current;
