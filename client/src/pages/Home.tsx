@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Mail, ExternalLink } from "lucide-react";
+import { Mail, ExternalLink, Linkedin } from "lucide-react";
 import {
   profileData as fallbackProfileData,
   publications as fallbackPublications,
@@ -549,7 +549,7 @@ export default function Home() {
             </Button>
             <Button asChild variant="outline" size="lg">
               <a href={profile.social.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm lg:text-base font-medium">
-                <img src="https://cdn.simpleicons.org/linkedin/005bbd" alt="LinkedIn logo" className="w-4 h-4 mr-2" loading="lazy" />
+                <Linkedin className="w-4 h-4 mr-2 text-primary" />
                 LinkedIn
               </a>
             </Button>
