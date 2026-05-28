@@ -8,6 +8,7 @@ import {
   type Publication,
 } from "@shared/profile-data";
 import { useEffect, useMemo, useRef, useState } from "react";
+import heroWaterImage from "../assets/mywork.png";
 
 const institutionDomains = [
   { pattern: "asian development bank", domain: "adb.org" },
@@ -232,7 +233,7 @@ export default function Home() {
           {/* Right Visual */}
           <div className="fade-in" style={{ animationDelay: "100ms" }}>
             <img 
-              src="/assets/images/mywork.png"
+              src={heroWaterImage}
               alt="Water Management Systems"
               className="w-full h-auto rounded-2xl soft-shadow-lg"
             />
