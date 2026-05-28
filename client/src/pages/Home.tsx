@@ -476,10 +476,10 @@ export default function Home() {
             <h2 className="text-3xl font-bold">Awards & Grants</h2>
             <div className="space-y-4">
               {[
-                { title: "Award of Excellence for Contribution in Water Resource Development", org: "NWARA, Afghanistan", year: "2019" },
                 { title: "PI - Grant", org: "University of Central Asia - Afghanistan Water Governance", year: "2024" },
                 { title: "Co-PI and Implementation Lead", org: "Royal Academy of Engineering - Household Water Treatment", year: "2021–2022" },
                 { title: "UNESCO Silk Roads Youth Research Grant", org: "Comparative Morocco-Afghanistan Water Management Study", year: "2021–2022" },
+                { title: "Award of Excellence for Contribution in Water Resource Development", org: "NWARA, Afghanistan", year: "2019" },
               ].map((award, idx) => (
                 <Card key={idx} className="isometric-card p-4 stagger-item bg-white">
                   <h3 className="font-bold text-sm">{award.title}</h3>
