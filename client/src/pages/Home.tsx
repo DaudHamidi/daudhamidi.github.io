@@ -232,7 +232,7 @@ export default function Home() {
           {/* Right Visual */}
           <div className="fade-in" style={{ animationDelay: "100ms" }}>
             <img 
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663687308171/gnCtk8moCPPddaSaMLuGU5/hero-water-systems-4zmwy3mrBARBwYjxYiFGPe.webp"
+              src="/assets/images/mywork.png"
               alt="Water Management Systems"
               className="w-full h-auto rounded-2xl soft-shadow-lg"
             />
