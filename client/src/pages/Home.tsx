@@ -59,7 +59,7 @@ function InstitutionLogo({ label }: { label: string }) {
 
   if (showFallback) {
     return (
-      <div className="w-5 h-5 rounded-full border border-border bg-background/70 text-[9px] font-bold text-primary flex items-center justify-center flex-shrink-0">
+      <div className="w-7 h-7 rounded-full border border-border bg-background/70 text-[10px] font-bold text-primary flex items-center justify-center flex-shrink-0">
         {initialsFromName(label)}
       </div>
     );
@@ -70,7 +70,7 @@ function InstitutionLogo({ label }: { label: string }) {
       src={sources[sourceIndex]}
       alt={`${label} logo`}
       loading="lazy"
-      className="w-5 h-5 rounded-full border border-border bg-background/70 p-0.5 object-contain flex-shrink-0"
+      className="w-7 h-7 rounded-full border border-border bg-background/70 p-0.5 object-contain flex-shrink-0"
       onError={() => {
         const nextIndex = sourceIndex + 1;
         if (nextIndex < sources.length) {
